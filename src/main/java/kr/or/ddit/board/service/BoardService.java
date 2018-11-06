@@ -12,7 +12,7 @@ import kr.or.ddit.board.model.BoardVo;
 @Service("boardService")
 public class BoardService implements BoardServiceInf{
 
-//	@Resource(name="boardDao")
+	@Resource(name="boardDao")
 	private BoardDaoInf boardDao;
 	
 	public BoardService() {

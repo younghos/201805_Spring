@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+	<insert id="insertFile" parameterType="fileVo">
+		insert into springFileUpload
+		values(seq_fileid.nextval, #{s_file_name}, #{s_org_file_name}, #{s_file_path}, #{s_file_ext})
+	</insert>
+</mapper>
