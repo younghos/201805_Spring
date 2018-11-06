@@ -5,14 +5,11 @@ import static org.junit.Assert.assertEquals;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.file.model.FileVo;
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/root-context.xml"})
-public class FileDaoTest {
+import kr.or.ddit.test.ServiceDaoTestConfig;
+
+public class FileDaoTest extends ServiceDaoTestConfig{
 
 	@Resource(name="fileDao")
 	private FileDaoInf fileDao;
@@ -23,7 +20,7 @@ public class FileDaoTest {
 	* 변경이력 :
 	* Method 설명 : 파일정보 입력 테스트
 	*/
-	@Test
+	@Test(timeout = 5000) //5초안에 테스트가 실행돼야지 성공으로 간주
 	public void insertFileTest() {
 		/***Given***/
 		FileVo fileVo = new FileVo();
