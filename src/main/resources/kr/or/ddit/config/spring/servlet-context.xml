@@ -12,16 +12,44 @@
 	<!-- 스프링에서 처리 불가능한 리소스를 was의 default servlet으로 전달 -->
 	<mvc:default-servlet-handler default-servlet-name=""/>
 	
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
+	
 	<context:annotation-config />
 	
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
+	<!-- view resolver -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />	
+	</bean>
+	
+	<!-- tiles View resolver -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="1"></property>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />	
+	</bean>
+	
+	<!-- tiles configurer -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 우선순위를 가장 낮게 줘야한다. -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
 		<property name="prefix" value="/WEB-INF/view/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- json처리용 view -->
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+	<bean id="timesTableView" class="kr.or.ddit.mvc.view.TimesTablesView"></bean>
 	<!--  hello => /WEB-INF/view/hello.jsp -->
 	
 	<!-- 
@@ -33,4 +61,17 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="25000000" />
 	</bean>
+	
+	<!-- messageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/config/msg/error</value>
+				<value>classpath:kr/or/ddit/config/msg/msg</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
 </beans>

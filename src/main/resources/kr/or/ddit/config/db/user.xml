@@ -35,7 +35,7 @@
  	<insert id="insertUser" parameterType="userVo">
  		insert into jsp_user
 		(userId, name, pass, addr1, addr2, zipcd, email, tel, birth, profile)
-		values(#{userId}, #{name}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{email}, #{tel}, #{birth}, #{profile, jdbcType=VARCHAR})
+		values(#{userId}, #{name}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{email}, #{tel}, #{birth}, #{profile, jdbcType=VARCHAR} )
  	</insert>
  	
  	<!-- 사용자 삭제 -->

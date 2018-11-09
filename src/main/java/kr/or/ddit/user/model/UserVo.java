@@ -1,23 +1,30 @@
 package kr.or.ddit.user.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class UserVo  implements HttpSessionBindingListener{
 	private String userId; // 회원아이디
 	private String name; // 회원이름
 	private String pass; // 회원비번
 	private String alias; // 회원별명
-	private Date birth; // 회원생일
 	private String addr1; // 회원주소
 	private String addr2; // 회원상세주소
 	private String zipcd; // 회원우편번호
 	private String email; // 회원이메일
 	private String tel; // 회원전화번호
 	private String profile; // 회원프로필경로
+//	private MultiPart profilePic; // 회원프로필경로
 	private int rnum;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date birth; // 회원생일
+	
 	
 	public int getRnum() {
 		return rnum;
@@ -55,11 +62,11 @@ public class UserVo  implements HttpSessionBindingListener{
 		this.addr2 = addr2;
 	}
 
-	public String getZipCd() {
+	public String getZipcd() {
 		return zipcd;
 	}
 
-	public void setZipCd(String zipcd) {
+	public void setZipcd(String zipcd) {
 		this.zipcd = zipcd;
 	}
 
@@ -107,6 +114,10 @@ public class UserVo  implements HttpSessionBindingListener{
 	}
 	public Date getBirth() {
 		return birth;
+	}
+	public String getFormattedBirth() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(birth);
 	}
 	public void setBirth(Date birth) {
 		this.birth = birth;

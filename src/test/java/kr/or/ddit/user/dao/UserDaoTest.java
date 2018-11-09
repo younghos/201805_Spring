@@ -123,7 +123,7 @@ public class UserDaoTest extends ServiceDaoTestConfig{
 		userVo.setPass("testPass");
 		userVo.setAddr1("testAddr1");
 		userVo.setAddr2("testAddr2");
-		userVo.setZipCd("11111");
+		userVo.setZipcd("11111");
 		String str = "2018-10-12";
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date;
@@ -168,13 +168,13 @@ public class UserDaoTest extends ServiceDaoTestConfig{
 		/***Given***/
 		// userVo 생성
 		UserVo userVo = new UserVo();
-		userVo.setProfile("null");
+//		userVo.setProfile("null");
 		userVo.setUserId("testUser");
 		userVo.setName("testName");
 		userVo.setPass("testPass");
 		userVo.setAddr1("testAddr1");
 		userVo.setAddr2("testAddr2");
-		userVo.setZipCd("11111");
+		userVo.setZipcd("11111");
 		String str = "2018-10-12";
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date;
